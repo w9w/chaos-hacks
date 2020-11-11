@@ -18,11 +18,13 @@ for l in file:
     import re; l = re.sub("^", "https://chaos-data.projectdiscovery.io/", l); l = re.sub("$", ".zip", l)
     print(l)
     
-gives https://github.com/w9w/chaos-hacks/blob/main/download_links.txt
+returnes https://github.com/w9w/chaos-hacks/blob/main/download_links.txt
+
+A command
+
+cat download_links.txt | parallel 'wget {} && echo {} | awk "gsub(\"https://chaos-data.projectdiscovery.io/\", \"\")1" | xargs -Irn sh -c "unzip rn && rm rn"'
  
- cat download_links.txt | parallel 'wget {} && echo {} | awk "gsub(\"https://chaos-data.projectdiscovery.io/\", \"\")1" | xargs -Irn sh -c "unzip rn && rm rn"'
- 
- gives a list of all txt files with subdomains
+gives a list of all txt files with subdomains
  
  ## How to extract all subdomains into one txt file:
  

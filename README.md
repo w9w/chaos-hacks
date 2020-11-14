@@ -22,10 +22,10 @@ returnes https://github.com/w9w/chaos-hacks/blob/main/download_links.txt
 
 A command
 
-cat download_links.txt | parallel 'wget {} && echo {} | awk "gsub(\"https://chaos-data.projectdiscovery.io/\", \"\")1" | xargs -Irn sh -c "unzip rn && rm rn"'
+cat download_links.txt | parallel "wget {} && echo {} | awk 'gsub(\"https://chaos-data.projectdiscovery.io/\", \"\")1' | xargs -Irn sh -c 'unzip rn && rm rn'"
  
 gives a list of all txt files with subdomains
  
  ## How to extract all subdomains into one txt file:
  
- ls | parallel -j 15 "cat {} | tee -a all_hosts.txt >/dev/null"
+ls | xargs -I{} sh -c "cat {}|tee -a all_hosts.txt"

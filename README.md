@@ -29,3 +29,11 @@ gives a list of all txt files with subdomains
  ## How to extract all subdomains into one txt file:
  
 ls | xargs -I{} sh -c "cat {}|tee -a all_hosts.txt"
+
+- cat all_hosts.txt | wc -l
+
+1700590
+
+- cat all_hosts.txt | sort -u | wc -l
+
+1680511 - 20 000 lines
